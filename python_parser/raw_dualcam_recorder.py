@@ -1,3 +1,11 @@
+# This is a systemd service. It'll run from startup.
+# Check status: sudo systemctl status dualcam-recorder.service
+# Start: sudo systemctl start dualcam-recorder.service
+# See live logs: journalctl -u dualcam-recorder.service -f
+# sudo systemctl restart dualcam-recorder.service
+# sudo systemctl stop dualcam-recorder.service
+# sudo systemctl disable dualcam-recorder.service
+
 import os
 import signal
 import sys
