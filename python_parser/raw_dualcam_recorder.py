@@ -6,6 +6,34 @@
 # sudo systemctl stop dualcam-recorder.service
 # sudo systemctl disable dualcam-recorder.service
 
+'''
+sudo tee /etc/systemd/system/dualcam-recorder.service > /dev/null <<'EOF'
+[Unit]
+Description=Dual Camera Raw Recorder
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ttl
+Group=ttl
+SupplementaryGroups=video dialout
+WorkingDirectory=/home/ttl/crowdaware-dual-cam-test/python_parser
+ExecStart=/usr/bin/python3 /home/ttl/crowdaware-dual-cam-test/python_parser/raw_dualcam_recorder.py
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=20
+
+# Hardening for long-term operation
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+'''
+
 import os
 import signal
 import sys
