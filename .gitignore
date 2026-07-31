@@ -14,6 +14,10 @@
 # Linker files
 *.ilk
 
+# Python compile
+.pyc
+__pycache__
+
 # Debugger Files
 *.pdb
 
@@ -50,3 +54,4 @@ vscode/
 
 # Non-dummy data
 data/
+python_parser/captures_raw
